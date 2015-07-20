@@ -13,7 +13,7 @@ def load_controllers(cigarbot):
 
 def setup_bot():
     cigarbot = Bot()
-    cigarbot.config.set_subscriptions(['flockbots'])
+    cigarbot.config.subreddit = ['flockbots']
     cigarbot.login(
         'Review Lister for /r/CigarReview',
         credentials.oauth_info,
