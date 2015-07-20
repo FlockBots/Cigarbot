@@ -1,0 +1,4 @@
+SQLAlchemy==1.0.6
+fuzzywuzzy==0.5.0
+praw==3.1.0
+python-Levenshtein==0.12.0

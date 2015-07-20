@@ -1,0 +1,12 @@
+# virtualenv
+[Bb]in/
+[Ii]nclude/
+[Ll]ib/
+
+# data, logs, configuration
+log/
+data/
+config/
+
+# Python
+__pycache__/
