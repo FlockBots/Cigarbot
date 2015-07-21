@@ -16,9 +16,7 @@ class FetchReviewsController:
             sort="new",
             limit=None
         )
-        print('fetching {}'.format(author))
         for review in reviews:
-            print(review.title)
             if Review.get(self.database, review.id):
                 break
             entry = Review(
