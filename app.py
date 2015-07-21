@@ -2,17 +2,13 @@ from flockbot import Bot
 from flockbot import Callback
 from controllers import ListReviewsController
 from config import credentials
-
-def load_controllers(cigarbot):
-    list_reviews = ListReviewsController(
-        cigarbot.get_database(),
-        cigarbot.reddit,
-        list_length=10
-    )
-    return [list_reviews]
+import routes
 
 def setup_bot():
-    cigarbot = Bot()
+    cigarbot = Bot(
+        databasefile='storage/bot.db', 
+        configfile='storage/log/bot.log'
+    )
     cigarbot.config.subreddits = ['flockbots']
     cigarbot.login(
         'Review Lister for /r/CigarReview',
