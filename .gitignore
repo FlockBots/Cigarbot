@@ -4,9 +4,8 @@
 [Ll]ib/
 
 # data, logs, configuration
-log/
-data/
 config/
+storage/
 
 # Python
 __pycache__/
