@@ -28,10 +28,11 @@ class ListReviewsController():
     def search_reviews(self, editable, match):
         author = editable.author.name.lower()
         self.fetcher.fetch_reviews(author)
+        keywords = match.group(1)
         reviews = Review.get_by(
             session=self.database,
             author=author,
-            title=match.group(1),
+            title=keywords,
             limit=self.list_length,
         )
-        return views.reviewlist(editable.author, reviews)
+        return views.searchresults(editable.author, reviews, keywords)

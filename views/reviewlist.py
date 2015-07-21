@@ -9,3 +9,7 @@ def reviewlist(author, reviews):
         )
     string += '\n\n'
     return string
+
+def searchresults(author, reviews, keyword):
+    if not reviews:
+        return 'Sorry {}, I cannot find any of your `{}` reviews.\n\n'.format(author, keyword)
