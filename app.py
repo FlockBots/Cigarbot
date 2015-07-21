@@ -16,8 +16,7 @@ def setup_bot():
         credentials.refresh_token
     )
 
-    for controller in load_controllers(cigarbot):
-        cigarbot.attach_controller(controller)
+    routes.register(cigarbot)
     return cigarbot
 
 def main():

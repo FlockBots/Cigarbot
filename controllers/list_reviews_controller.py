@@ -1,10 +1,9 @@
 from controllers import FetchReviewsController
-from flockbot.controllers import ControllerMeta
 from flockbot.decorators import callback
 from models import Review
 import views
 
-class ListReviewsController(metaclass=ControllerMeta):
+class ListReviewsController():
     def __init__(self, database, reddit, list_length):
         self.database = database
         self.fetcher  = FetchReviewsController(database, reddit)
@@ -14,8 +13,7 @@ class ListReviewsController(metaclass=ControllerMeta):
         self.database.commit()
         self.database.close()
 
-    @callback('message', r'/u/cigar_bot')
-    def list_reviews(self, match, editable):
+    def list_reviews(self, editable, match):
         author = editable.author.name.lower()
         self.fetcher.fetch_reviews(author)
 
@@ -27,8 +25,7 @@ class ListReviewsController(metaclass=ControllerMeta):
 
         return views.reviewlist(editable.author, reviews)
 
-    @callback('message', r'/u/cigar_bot [`\'"](.+?)[`\'"]')
-    def search_reviews(self, match, editable):
+    def search_reviews(self, editable, match):
         author = editable.author.name.lower()
         self.fetcher.fetch_reviews(author)
         reviews = Review.get_by(
