@@ -14,7 +14,7 @@ def searchresults(author, reviews, keyword):
     string += '\n\n'
     return string
 
-def _create_list(review):
+def _create_list(reviews):
     string = ''
     for review in reviews:
         string += '* [{title}]({url})'.format(
