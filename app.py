@@ -21,7 +21,7 @@ def setup_bot():
 
 def main():
     cigarbot = setup_bot()
-    cigarbot.run(check_comments=False, check_submissions=False)
+    cigarbot.run(check_comments=False)
 
 if __name__ == '__main__':
     main()
