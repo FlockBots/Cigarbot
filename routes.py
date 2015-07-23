@@ -12,5 +12,13 @@ def _init_controllers(bot):
 
 def register(bot):
     _init_controllers(bot)
-    bot.register_callback('message', r'''/u/cigar_bot [^'"`]''', 'ListreviewsController@list_reviews')
-    bot.register_callback('message', r'''/u/cigar_bot [`'"](.+?)[`'"]''', 'ListreviewsController@search_reviews')
+    bot.register_callback(
+        ['message', 'submission'],
+        r'''/u/cigar_bot [^'"`]''',
+         'ListreviewsController@list_reviews'
+    )
+    bot.register_callback(
+        ['message', 'submission'],
+        r'''/u/cigar_bot [`'"](.+?)[`'"]''',
+        'ListreviewsController@search_reviews'
+    )
