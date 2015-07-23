@@ -26,8 +26,8 @@ class Review(Base):
     def get_by(session, author=None, title=None, limit=50):
         query = session.query(Review)
         if author:
-            query.filter(Review.author == author.lower())
-        query.order_by(Review.date.desc())
+            query = query.filter(Review.author == author.lower())
+        query = query.order_by(Review.date.desc())
         if title:
             scores = []
             for row in query.all():
