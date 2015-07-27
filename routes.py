@@ -1,4 +1,5 @@
 from controllers import ListReviewsController
+from controllers import FetchReviewsController
 
 def _init_controllers(bot):
     list_reviews_controller = ListReviewsController(
