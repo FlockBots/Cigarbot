@@ -34,7 +34,7 @@ def register(bot):
         'ListreviewsController@search_reviews'
     )
     bot.register_callback(
-        ['message, submission'],
+        ['message', 'submission'],
         r'''/u/cigar_bot any [`'"](.+?)[`'"]''',
         'ListReviewsController@list_any'
     )
