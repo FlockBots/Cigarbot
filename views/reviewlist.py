@@ -14,10 +14,27 @@ def searchresults(author, reviews, keyword):
     string += '\n\n'
     return string
 
+def anyresults(reviews, keyword):
+    string = "Most recent `{}` reviews in /r/CigarReview"
+    string += _create_any_list(reviews)
+    string += '\n\n'
+    return string
+
+def _create_any_list(reviews):
+    string = ''
+    for review in reviews:
+        string += '* [{title}]({url}) (*{author}*)\n'.format(
+            author  = review.author,
+            profile = 'https://reddit.com/u/' + review.author,
+            title   = review.title,
+            url     = review.url
+        )
+    return string
+
 def _create_list(reviews):
     string = ''
     for review in reviews:
-        string += '* [{title}]({url})'.format(
+        string += '* [{title}]({url})\n'.format(
             title = review.title,
             url   = review.url
         )

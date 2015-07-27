@@ -9,6 +9,21 @@ class FetchReviewsController:
         self.database.commit()
         self.database.close
 
+    def add_review(self, editable, match):
+        blacklist = ['content', 'weekly']
+        for word in blacklist:
+            if word in editable.title.lower():
+                return
+        entry = Review(
+            id=editable.id,
+            author=editable.author.name.lower(),
+            date=int(editable.original.created_utc),
+            url=editable.permalink,
+            title=editable.original.title
+        )
+        self.database.add(entry)
+        self.database.commit()
+
     def fetch_reviews(self, author):
         reviews = self.reddit.search(
             query="author:{}".format(author),
