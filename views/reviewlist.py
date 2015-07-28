@@ -15,7 +15,7 @@ def searchresults(author, reviews, keyword):
     return string
 
 def anyresults(reviews, keyword):
-    string = "Most recent `{}` reviews in /r/CigarReview"
+    string = "Most recent `{}` reviews in /r/CigarReview\n\n".format(keyword)
     string += _create_any_list(reviews)
     string += '\n\n'
     return string

@@ -38,10 +38,9 @@ class ListReviewsController():
         return views.searchresults(editable.author, reviews, keywords)
 
     def list_any(self, editable, match):
-        self.fetcher.fetch_reviews()
         keyword = match[0]
         reviews = Review.get_by(
             session=self.database,
-            title=keywords
+            title=keyword
         )
-        return views.anyresults(reviews)
+        return views.anyresults(reviews, keyword)
